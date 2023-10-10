@@ -27,6 +27,7 @@ import { FileUpload } from "@/components/file-upload";
 import { useRouter } from "next/navigation";
 import { useModal } from "@/hooks/use-modal-store";
 import { useEffect } from "react";
+import { Loaders } from "../loader";
 
 const formSchema = z.object({
   name: z.string().min(1, {
@@ -133,7 +134,11 @@ export const EditServerModal = () => {
             </div>
             <DialogFooter className="bg-gray-100 px-6 py-4">
               <Button variant="primary" disabled={isLoading}>
-                Save
+                {isLoading ? (
+                  <Loaders.spinner className="h-4 w-4 mx-2 animate-spin" />
+                ) : (
+                  <div>Save</div>
+                )}
               </Button>
             </DialogFooter>
           </form>

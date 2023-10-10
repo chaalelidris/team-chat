@@ -29,6 +29,7 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { FileUpload } from "../file-upload";
 import { useRouter } from "next/navigation";
+import { Loaders } from "../loader";
 
 const formSchema = z.object({
   name: z.string().min(1, {
@@ -132,7 +133,11 @@ const InitialModal = () => {
 
               <DialogFooter className="bg-gray-100 px-6 py-4">
                 <Button disabled={isLoading} variant={"primary"}>
-                  Create
+                  {isLoading ? (
+                    <Loaders.spinner className="h-4 w-4 mx-2 animate-spin" />
+                  ) : (
+                    <div>Create</div>
+                  )}
                 </Button>
               </DialogFooter>
             </form>

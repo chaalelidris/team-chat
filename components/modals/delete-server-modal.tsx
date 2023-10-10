@@ -12,9 +12,10 @@ import {
 import { useModal } from "@/hooks/use-modal-store";
 import { useOrigin } from "@/hooks/use-origin";
 import { useState } from "react";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { Loaders } from "../loader";
 
 export const DeleteServerModal = () => {
   const { isOpen, onClose, type, data } = useModal();
@@ -49,7 +50,7 @@ export const DeleteServerModal = () => {
             Delete server
           </DialogTitle>
           <DialogDescription className="text-center text-zinc-500">
-            Are you sure you want to delete {" "}
+            Are you sure you want to delete{" "}
             <span className="font-semibold text-indigo-500">
               {server?.name}
             </span>
@@ -60,8 +61,16 @@ export const DeleteServerModal = () => {
             <Button disabled={isLoading} onClick={onClose} variant={"ghost"}>
               Cancel
             </Button>
-            <Button disabled={isLoading} onClick={onClick} variant={"destructive"}>
-              Confirm
+            <Button
+              disabled={isLoading}
+              onClick={onClick}
+              variant={"destructive"}
+            >
+              {isLoading ? (
+                <Loaders.spinner className="h-4 w-4 mx-2 animate-spin" />
+              ) : (
+                <div>Confirm</div>
+              )}
             </Button>
           </div>
         </DialogFooter>

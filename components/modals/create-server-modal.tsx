@@ -5,7 +5,6 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-
 import {
   Dialog,
   DialogContent,
@@ -27,6 +26,7 @@ import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/file-upload";
 import { useRouter } from "next/navigation";
 import { useModal } from "@/hooks/use-modal-store";
+import { Loaders } from "../loader";
 
 const formSchema = z.object({
   name: z.string().min(1, {
@@ -126,7 +126,11 @@ export const CreateServerModal = () => {
             </div>
             <DialogFooter className="bg-gray-100 px-6 py-4">
               <Button variant="primary" disabled={isLoading}>
-                Create
+                {isLoading ? (
+                  <Loaders.spinner className="h-4 w-4 mx-2 animate-spin" />
+                ) : (
+                  <div>Create</div>
+                )}
               </Button>
             </DialogFooter>
           </form>
