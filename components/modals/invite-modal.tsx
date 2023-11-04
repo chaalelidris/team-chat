@@ -15,7 +15,7 @@ import { Check, Copy, RefreshCw } from "lucide-react";
 import { useOrigin } from "@/hooks/use-origin";
 import { useState } from "react";
 import axios from "axios";
-import ActionTooltip from "../action-tooltip";
+import { ActionTooltip } from "../action-tooltip";
 import { cn } from "@/lib/utils";
 
 export const InviteModal = () => {
