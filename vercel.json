@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "./",
+      "use": "@now/node",
+      "config": {
+        "maxLambdaSize": "2048mb"
+      }
+    }
+  ],
+  "build": {
+    "scripts": {
+      "build": "npm run build && npx prisma generate"
+    }
+  }
+}
