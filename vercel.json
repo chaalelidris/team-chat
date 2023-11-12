@@ -9,9 +9,20 @@
       }
     }
   ],
-  "build": {
-    "scripts": {
-      "build": "npm run build && npx prisma generate"
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "nodejs14.x",
+      "includeFiles": "api/**/*.js"
+    }
+  },
+  "hooks": {
+    "build": {
+      "functions": [
+        {
+          "function": "api/**/*.js",
+          "command": "npm run build && npx prisma generate"
+        }
+      ]
     }
   }
 }
